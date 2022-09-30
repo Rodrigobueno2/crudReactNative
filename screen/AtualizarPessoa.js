@@ -6,7 +6,8 @@ import axios from 'axios'
 const AtualizarPessoa = ({navigation,route})=>{
 
     const atualizarPessoa = (nome,cpf)=>{
-       axios.put("https://crudcrud.com/api/59be56fe29ee4530bf18607c0684d8d0/pessoa/"+route.params?.id,{
+       axios.put("http://localhost:8081/api/pessoas/"+route.params?.id,{
+           id:route.params?.id,
            nome:nome,
            cpf:cpf
        }).then((response)=>{

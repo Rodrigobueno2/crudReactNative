@@ -6,11 +6,14 @@ import axios from 'axios'
 const CadastrarPessoa = () => {
 
   const salvarPessoa =(nome,cpf)=>{
-     axios.post("https://crudcrud.com/api/59be56fe29ee4530bf18607c0684d8d0/pessoa",{
+     axios.post("http://localhost:8081/api/pessoas",{
        nome:nome,
        cpf:cpf,
      }).then(()=>{
        alert("cadastrado com sucesso");
+     }).catch((error)=>{
+       alert(error);
+       console.log(error);
      })
   }
 

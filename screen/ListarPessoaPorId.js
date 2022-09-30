@@ -10,7 +10,7 @@ const ListarPessoaPorId = ()=>{
   const [id,setId]=React.useState("");
 
   const listarPessoaPorId = (id) =>{
-     axios.get("https://crudcrud.com/api/59be56fe29ee4530bf18607c0684d8d0/pessoa/"+id).then((response)=>{
+     axios.get("http://localhost:8081/api/pessoas/"+id).then((response)=>{
        setNome(response.data.nome);
        setCpf(response.data.cpf);
      })

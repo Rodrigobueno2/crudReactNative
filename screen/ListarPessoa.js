@@ -5,9 +5,10 @@ import axios from 'axios'
 
 const ListarPessoa = ({navigation}) => {
     const listarPessoas = () => {
-       axios.get("https://crudcrud.com/api/59be56fe29ee4530bf18607c0684d8d0/pessoa").then((response)=>{
+       axios.get("http://localhost:8081/api/pessoas/list").then((response)=>{
            console.log(response.data)
            setPessoa(response.data)
+           //setPessoa(response.data.content)  --> paginado
        })
     }
 
@@ -26,13 +27,13 @@ const ListarPessoa = ({navigation}) => {
                      <Text> Nome: {element.nome}</Text>
                      <Text> CPF: {element.cpf}</Text>
                      <Button
-                        onPress={()=>navigation.navigate('DeletarPessoa',{id:element._id,nome:element.nome,cpf:element.cpf})}
+                        onPress={()=>navigation.navigate('DeletarPessoa',{id:element.id,nome:element.nome,cpf:element.cpf})}
                         title="Deletar"
                         color="red"
                         accessibilityLabel="Learn more about this purple button"
                     />
                     <Button
-                        onPress={()=>navigation.navigate('AtualizarPessoa',{id:element._id,nome:element.nome,cpf:element.cpf})}
+                        onPress={()=>navigation.navigate('AtualizarPessoa',{id:element.id,nome:element.nome,cpf:element.cpf})}
                         title="Atualizar"
                         color="green"
                         accessibilityLabel="Learn more about this purple button"

@@ -6,7 +6,7 @@ import axios from 'axios'
 const DeletarPessoa = ({navigation,route})=>{
 
    const deletarPessoa = (id)=>{
-       axios.delete("https://crudcrud.com/api/59be56fe29ee4530bf18607c0684d8d0/pessoa/"+id).then(()=>{
+       axios.delete("http://localhost:8081/api/pessoas/"+id).then(()=>{
            alert("Deletado com Sucesso");
            navigation.navigate('Home')
        })
