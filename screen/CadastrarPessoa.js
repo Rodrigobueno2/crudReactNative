@@ -5,10 +5,15 @@ import axios from 'axios'
 
 const CadastrarPessoa = () => {
 
-  const salvarPessoa =(nome,cpf)=>{
+  const salvarPessoa =(nome,cpf,bairro,numero,rua)=>{
      axios.post("http://localhost:8081/api/pessoas",{
        nome:nome,
        cpf:cpf,
+       endereco:{
+         bairro:bairro,
+         rua:rua,
+         numero:numero
+      }
      }).then(()=>{
        alert("cadastrado com sucesso");
      }).catch((error)=>{
@@ -19,6 +24,9 @@ const CadastrarPessoa = () => {
 
   const[nome,setNome]=React.useState("");
   const[cpf,setCpf]=React.useState("");
+  const[rua,setRua]=React.useState("");
+  const[bairro,setBairro]=React.useState("");
+  const[numero,setNumero]=React.useState("");
     return(
       <View style={styles.view}>
          <Text style={styles.text}>Tela de Cadastro</Text>
@@ -34,12 +42,31 @@ const CadastrarPessoa = () => {
             value={cpf}
             placeholder="digite seu cpf"
          />
+         <Text>Endereço</Text>
+         <TextInput
+            style={styles.input}
+            onChangeText={setRua}
+            value={rua}
+            placeholder="digite o nome da rua"
+         />
+          <TextInput
+            style={styles.input}
+            onChangeText={setNumero}
+            value={numero}
+            placeholder="digite o numero da rua"
+         />
+         <TextInput
+            style={styles.input}
+            onChangeText={setBairro}
+            value={bairro}
+            placeholder="digite o bairro"
+         />
           <Button
               title="Cadastrar Pessoa"
               color="green"
               accessibilityLabel="Learn more about this purple button"
               onPress={() =>
-                  salvarPessoa(nome,cpf)
+                  salvarPessoa(nome,cpf,bairro,numero,rua)
               }
           />
       </View>

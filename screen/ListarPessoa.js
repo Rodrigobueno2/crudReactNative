@@ -26,14 +26,17 @@ const ListarPessoa = ({navigation}) => {
                  <View>
                      <Text> Nome: {element.nome}</Text>
                      <Text> CPF: {element.cpf}</Text>
+                     <Text> Rua: {element.endereco?.rua}</Text>
+                     <Text> Numero: {element.endereco?.numero}</Text>
+                     <Text> Bairro: {element.endereco?.bairro}</Text>
                      <Button
-                        onPress={()=>navigation.navigate('DeletarPessoa',{id:element.id,nome:element.nome,cpf:element.cpf})}
+                        onPress={()=>navigation.navigate('DeletarPessoa',{id:element.id,nome:element.nome,cpf:element.cpf,rua:element.endereco?.rua,numero:element.endereco?.numero,bairro:element.endereco?.bairro})}
                         title="Deletar"
                         color="red"
                         accessibilityLabel="Learn more about this purple button"
                     />
                     <Button
-                        onPress={()=>navigation.navigate('AtualizarPessoa',{id:element.id,nome:element.nome,cpf:element.cpf})}
+                        onPress={()=>navigation.navigate('AtualizarPessoa',{id:element.id,nome:element.nome,cpf:element.cpf,rua:element.endereco.rua,numero:element.endereco.numero,bairro:element.endereco.bairro})}
                         title="Atualizar"
                         color="green"
                         accessibilityLabel="Learn more about this purple button"

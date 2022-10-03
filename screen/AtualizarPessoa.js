@@ -5,11 +5,17 @@ import axios from 'axios'
 
 const AtualizarPessoa = ({navigation,route})=>{
 
-    const atualizarPessoa = (nome,cpf)=>{
+    const atualizarPessoa = (nome,cpf,numero,rua,bairro)=>{
        axios.put("http://localhost:8081/api/pessoas/"+route.params?.id,{
            id:route.params?.id,
            nome:nome,
-           cpf:cpf
+           cpf:cpf,
+           endereco:{
+            rua:rua,
+            numero:numero,
+            bairro:bairro
+           }
+           
        }).then((response)=>{
            alert("atualizado com sucesso");
            navigation.navigate('Home');
@@ -19,6 +25,9 @@ const AtualizarPessoa = ({navigation,route})=>{
     
     const[nome,setNome]=React.useState(route.params?.nome);
     const[cpf,setCpf]=React.useState(route.params?.cpf);
+    const[rua,setRua]=React.useState(route.params?.rua);
+    const[numero,setNumero]=React.useState(route.params?.numero);
+    const[bairro,setBairro]=React.useState(route.params?.bairro);
     return(
        <View>
            <Text>Atualizar Pessoa</Text>
@@ -34,12 +43,30 @@ const AtualizarPessoa = ({navigation,route})=>{
                 value={cpf}
                 placeholder="digite seu cpf"
             />
+            <TextInput
+                style={styles.input}
+                onChangeText={setRua}
+                value={rua}
+                placeholder="digite a rua"
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={setNumero}
+                value={numero}
+                placeholder="digite o numero"
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={setBairro}
+                value={bairro}
+                placeholder="digite o bairro"
+            />
             <Button
               title="Atualizar Pessoa"
               color="green"
               accessibilityLabel="Learn more about this purple button"
               onPress={() =>
-                  atualizarPessoa(nome,cpf)
+                  atualizarPessoa(nome,cpf,rua,bairro,numero)
               }
             />
        </View>

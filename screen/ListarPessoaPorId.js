@@ -8,11 +8,17 @@ const ListarPessoaPorId = ()=>{
   const [nome,setNome]=React.useState("");
   const [cpf,setCpf]=React.useState("");
   const [id,setId]=React.useState("");
+  const [rua,setRua]=React.useState("");
+  const [numero,setNumero]=React.useState("");
+  const [bairro,setBairro]=React.useState("");
 
   const listarPessoaPorId = (id) =>{
      axios.get("http://localhost:8081/api/pessoas/"+id).then((response)=>{
        setNome(response.data.nome);
        setCpf(response.data.cpf);
+       setRua(response.data.endereco.rua);
+       setNumero(response.data.endereco.numero);
+       setBairro(response.data.endereco.bairro);
      })
   }
    
@@ -36,6 +42,9 @@ const ListarPessoaPorId = ()=>{
      <Text>_______________________________________</Text>
      <Text>Nome: {nome}</Text>
      <Text>Cpf: {cpf}</Text>
+     <Text>Rua: {rua}</Text>
+     <Text>Numero: {numero}</Text>
+     <Text>Bairro: {bairro}</Text>
       </View>
     );
 }
